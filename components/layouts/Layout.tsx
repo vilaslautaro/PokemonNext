@@ -1,5 +1,5 @@
-import Head from "next/head";
 import { FC } from "react";
+import Head from "next/head";
 import { Navbar } from "../ui";
 
 type Props = {
@@ -7,7 +7,10 @@ type Props = {
   title?: string;
 };
 
+const origin = (typeof window === 'undefined') ? '' : window.location.origin
+
 export const Layout: FC<Props> = ({ children, title }) => {
+
   return (
     <>
       <Head>
@@ -18,6 +21,9 @@ export const Layout: FC<Props> = ({ children, title }) => {
         />
         <meta name="authot" content="Lautaro Vilas"></meta>
         <meta name="keywords" content={`${title}. pokemon, pokedex`} />
+        <meta property="og:title" content={`Informacion sobre ${title}`} />
+        <meta property="og:description" content={`Obtene la mejor informacion sobre ${title} y mucho más sobre Pokemon!`} />
+        <meta property="og:image" content={`${origin}/img/banner.png`} />
       </Head>
 
       <Navbar />
